@@ -24,9 +24,6 @@ const estilos = StyleSheet.create({
         color: "white", 
         fontFamily: "AveriaLibre-Regular", 
         fontSize: 30
-    },
-    corBotaoOk: {
-        backgroundColor: "#37BD6D"
     }
 })
 
