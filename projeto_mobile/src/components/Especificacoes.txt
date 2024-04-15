@@ -1,6 +1,0 @@
-Arquivo para guardar as especificações do projeto
-
-- Font dos textos: Averia Libre
-
-- Cor de fundo do projeto: #372775
-- Cor do botão verde para SALVAR/CADASTRAR/RECUPERAR: #37BD6D

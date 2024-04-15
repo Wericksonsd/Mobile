@@ -1,0 +1,12 @@
+Arquivo para guardar as especificações do projeto
+
+--+ StyleSheet +--
+- viewMae: View principal que pega todo o fundo do projeto
+- texto: Todos os textos 
+-
+
+--+ FORMATAÇÃO +--
+- Fonte dos textos: Averia Libre
+
+- Cor de fundo do projeto: #372775
+- Cor do botão verde para SALVAR/CADASTRAR/RECUPERAR: #37BD6D
