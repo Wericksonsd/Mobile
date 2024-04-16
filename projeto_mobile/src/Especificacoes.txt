@@ -10,3 +10,5 @@ Arquivo para guardar as especificações do projeto
 
 - Cor de fundo do projeto: #372775
 - Cor do botão verde para SALVAR/CADASTRAR/RECUPERAR: #37BD6D
+- Cor do botão azul (Criar minha conta): #419ED7
+- Cor do botão cinza (Esqueci minha senha): #B0CCDE
