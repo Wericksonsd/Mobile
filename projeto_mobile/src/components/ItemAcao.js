@@ -1,3 +1,4 @@
+//Importação
 import { Text, StyleSheet, View } from 'react-native'
 
 const ItemAcao = (props) => {

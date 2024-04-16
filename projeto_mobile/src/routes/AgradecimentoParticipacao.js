@@ -12,6 +12,7 @@ const AgradecimentoParticipacao = (props) => {
     )
 }
 
+//Estilização
 const estilos = StyleSheet.create({
     viewMae: {
         backgroundColor: "#372775",

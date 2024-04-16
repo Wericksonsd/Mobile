@@ -8,6 +8,7 @@ const Botao = (props) => {
     )
 }
 
+//Estilização
 const estilos = StyleSheet.create({
     texto: {
         fontFamily: 'AveriaLibre-Regular',

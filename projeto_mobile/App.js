@@ -20,4 +20,5 @@ const App = () => {
     )
 }
 
+//exportação
 export default App
