@@ -1,10 +1,15 @@
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View, Pressable } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const ItemAcao = (props) => {
+    
     return (
+    <Pressable onPress={() => {props.navigation.navigate=(props.tela)}} style={{backgroundColor:"red"}}>
         <View style={estilos.view}>
-            <Text style={estilos.texto}>{props.texto}Modificar</Text>
+            <Icon name={props.icone} size={90} color="white" />
+            <Text style={estilos.texto}>{props.texto}</Text>
         </View>
+    </Pressable>
     )
 }
 

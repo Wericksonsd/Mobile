@@ -3,23 +3,26 @@
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
 import { useState } from 'react'
 import Botao from '../components/Botao'
+import ItemAcao from '../components/ItemAcao'
+
 
 const Login = (props) => {
     const [txtUsuario, setUsuario] = useState()
     const [txtSenha, setSenha] = useState()
 
     const goToFinal = () => {
-        props.navigation.navigate('AgradecimentoParticipacao')
+        props.navigation.navigate('ItemAcao')
     }
 
     return (
         <View style={estilos.viewMae}>
             <View>
                 <Text style={estilos.texto}>Satisfying.you</Text>
-
+                
+                {/* Apenas para teste de elemento */}
+                <ItemAcao texto="Login" icone="home" nav="Login"/>
             </View>
-            <Botao>Texto</Botao>
-            <Button onPress={goToFinal} color='#37BD6D' title='Salvar'>fasf</Button>
+            <Button onPress={goToFinal} color='#37BD6D' title='Salvar'/>
         </View>
     )
 }
