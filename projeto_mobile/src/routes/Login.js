@@ -1,34 +1,47 @@
 //Tela de login do Sistema
 //Imports
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
 import { useState } from 'react'
+import Botao from '../components/Botao'
 
-const Login = () => {
+const Login = (props) => {
     const [txtUsuario, setUsuario] = useState()
     const [txtSenha, setSenha] = useState()
 
-    return(
+    const goToFinal = () => {
+        props.navigation.navigate('AgradecimentoParticipacao')
+    }
+
+    return (
         <View style={estilos.viewMae}>
-            <Text>Peso:</Text>
-            <TextInput></TextInput>
+            <View>
+                <Text style={estilos.texto}>Satisfying.you</Text>
+
+            </View>
+            <Botao>Texto</Botao>
+            <Button onPress={goToFinal} color='#37BD6D' title='Salvar'>fasf</Button>
         </View>
-    ) 
+    )
 }
 
 const estilos = StyleSheet.create({
     viewMae: {
-        backgroundColor: "#372775", 
-        width: "100%", 
-        height: "100%", 
-        justifyContent: "center", 
-        alignItems: "center"
-    }, 
-    texto: {
-        color: "white", 
-        fontFamily: "AveriaLibre-Regular"
+        backgroundColor: "#372775",
+        width: "100%",
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 30
     },
-    corBotaoOk: {
-        backgroundColor: "#37BD6D"
+    texto: {
+        color: "white",
+        fontFamily: "AveriaLibre-Regular",
+        fontSize: 40
+    },
+    botaoOk: {
+        fontFamily: "AveriaLibre-Regular",
+        height: 100,
+        width: 100
     }
 })
 
