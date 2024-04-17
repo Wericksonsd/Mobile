@@ -14,7 +14,6 @@ const App = () => {
             <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false, headerTintColor: 'white', headerStyle: { backgroundColor: '#2B1D62' } }}>
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: true }} />
                 <Stack.Screen name="AgradecimentoParticipacao" component={AgradecimentoParticipacao} />
-                <Stack.Screen name="ItemAcao" component={ItemAcao} />
             </Stack.Navigator>
         </NavigationContainer>
     )

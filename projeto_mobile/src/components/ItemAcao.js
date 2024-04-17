@@ -2,14 +2,13 @@ import { Text, StyleSheet, View, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const ItemAcao = (props) => {
-    
     return (
-    <Pressable onPress={() => {props.navigation.navigate=(props.tela)}} style={{backgroundColor:"red"}}>
-        <View style={estilos.view}>
-            <Icon name={props.icone} size={90} color="white" />
-            <Text style={estilos.texto}>{props.texto}</Text>
-        </View>
-    </Pressable>
+        <Pressable style={estilos.botao} onPress={() => {props.navigation.navigate(props.tela)}} >
+            <View style={estilos.view}>
+                <Icon name={props.icone} size={90} color="white" />
+                <Text style={estilos.texto}>{props.texto}</Text>
+            </View>
+        </Pressable>
     )
 }
 
@@ -26,6 +25,10 @@ const estilos = StyleSheet.create({
         fontFamily: "AveriaLibre-Regular",
         fontSize: 30,
         color: "white"
+    },
+    botao: {
+        height: 170,
+        width: 200
     }
 })
 

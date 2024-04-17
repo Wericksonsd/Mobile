@@ -2,8 +2,7 @@
 //Imports
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
 import { useState } from 'react'
-import Botao from '../components/Botao'
-import ItemAcao from '../components/ItemAcao'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 const Login = (props) => {
@@ -11,16 +10,14 @@ const Login = (props) => {
     const [txtSenha, setSenha] = useState()
 
     const goToFinal = () => {
-        props.navigation.navigate('ItemAcao')
+        props.navigation.navigate('AgradecimentoParticipacao')
     }
 
     return (
         <View style={estilos.viewMae}>
-            <View>
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10}}>
                 <Text style={estilos.texto}>Satisfying.you</Text>
-                
-                {/* Apenas para teste de elemento */}
-                <ItemAcao texto="Login" icone="home" nav="Login"/>
+                <Icon name="emoticon-happy-outline" size={60} color="white" />
             </View>
             <Button onPress={goToFinal} color='#37BD6D' title='Salvar'/>
         </View>
