@@ -5,7 +5,7 @@ const ItemAcao = (props) => {
     return (
         <Pressable style={estilos.botao} onPress={() => {props.navigation.navigate(props.tela)}} >
             <View style={estilos.view}>
-                <Icon name={props.icone} size={90} color="white" />
+                <Icon name={props.icone} size={90} color={props.cor} />
                 <Text style={estilos.texto}>{props.texto}</Text>
             </View>
         </Pressable>
@@ -16,7 +16,7 @@ const estilos = StyleSheet.create({
     view: {
         backgroundColor: "#312464",
         height: 170,
-        width: 200,
+        width: 210,
         borderRadius: 10,
         justifyContent: "center",
         alignItems: "center"

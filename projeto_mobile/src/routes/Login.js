@@ -10,7 +10,7 @@ const Login = (props) => {
     const [txtSenha, setSenha] = useState()
 
     const goToFinal = () => {
-        props.navigation.navigate('AgradecimentoParticipacao')
+        props.navigation.navigate('AcoesPesquisa')
     }
 
     return (

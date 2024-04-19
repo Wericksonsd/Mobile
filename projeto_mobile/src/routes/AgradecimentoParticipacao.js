@@ -6,7 +6,7 @@ const AgradecimentoParticipacao = (props) => {
     return (
         <View style={estilos.viewMae}>
             <Text style={estilos.texto}>Obrigado por participar da pesquisa!</Text>
-            <Button color="#372770" onPress={() => { props.navigation.navigate('Login') }} title='' />
+            <Button color="#372770" onPress={() => { props.navigation.goBack() }} title='' />
             <Text style={estilos.texto}>Aguardamos você no próximo ano!</Text>
         </View>
     )
