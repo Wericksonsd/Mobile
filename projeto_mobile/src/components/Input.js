@@ -2,11 +2,11 @@ import { TextInput, StyleSheet, Text, View } from "react-native";
 
 const Input = (props) => {
     return (
-        <View >
+        <View>
             <Text style={estilos.texto}>{props.label} </Text>
-            <TextInput style={estilos.input}/>
+            <TextInput style={estilos.input} value={props.txt} onChangeText={props.setTxt}
+            placeholder={props.placeholder} placeholderTextColor={props.color} />
         </View>
-        
     )
 }
 

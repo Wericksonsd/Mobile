@@ -7,16 +7,16 @@ import Botao from '../components/Botao'
 
 
 const NovaConta = (props) => {
-    const [txtUsuario, setUsuario] = useState()
-    const [txtSenha, setSenha] = useState()
+    const [usuario, setUsuario] = useState()
+    const [senha, setSenha] = useState()
 
     return (
         <View style={estilos.viewMae}>
             <View style={estilos.formulario}>
                 <View style={{gap:10}}>
-                    <Input label="E-mail" texto="" />
-                    <Input label="Senha" texto=""/>
-                    <Input label="Repetir Senha" texto=""/>
+                    <Input label="E-mail" txt={usuario} setTxt={setUsuario} placeholder="usuario@email.com" color="grey"/>
+                    <Input label="Senha" txt={senha} setTxt={setSenha} placeholder="******" color="grey"/>
+                    <Input label="Repetir senha" txt={senha} setTxt={setSenha} placeholder="******" color="grey"/>
                 </View>
                 <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} navigation={props.navigation} tela="DrawerNavigator"/>
             </View>

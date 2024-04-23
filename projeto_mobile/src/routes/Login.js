@@ -6,11 +6,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Input from '../components/Input'
 import Botao from '../components/Botao'
 
-
 const Login = (props) => {
-    const [txtUsuario, setUsuario] = useState()
-    const [txtSenha, setSenha] = useState()
-
+    const [usuario, setUsuario] = useState()
+    const [senha, setSenha] = useState()
 
     return (
         <View style={estilos.viewMae}>
@@ -20,8 +18,8 @@ const Login = (props) => {
             </View>
             <View style={estilos.formulario}>
                 <View style={{gap:5}}>
-                    <Input label="E-mail" texto="" />
-                    <Input label="Senha" texto=""/>
+                    <Input label="E-mail" txt={usuario} setTxt={setUsuario} placeholder="usuario@email.com" color="grey"/>
+                    <Input label="Senha" txt={senha} setTxt={setSenha} placeholder="******" color="grey"/>
                 </View>
                 <Botao texto="Entrar" cor="#37BD6D" tamanho={32} navigation={props.navigation} tela="DrawerNavigator"/>
             </View>
@@ -49,12 +47,12 @@ const estilos = StyleSheet.create({
     },
     botoes: {
         width: 600,
-        gap: 10
+        gap: 5
     },
     formulario: {
         width: 600,
         height: 210,
-        gap: 20
+        gap: 10
     },
     titulo: {
         display: 'flex', 

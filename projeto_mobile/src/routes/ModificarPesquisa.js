@@ -10,16 +10,16 @@ import PopUp from './PopUp'
 
 
 const ModificarPesquisa = (props) => {
-    const [txtUsuario, setUsuario] = useState()
-    const [txtSenha, setSenha] = useState()
+    const [nome, setNome] = useState()
+    const [data, setData] = useState()
     const [visuModal, setVisuModal] = useState(false)
 
     return (
         <View style={estilos.viewMae}>
             <View style={estilos.formulario}>
                 <View style={{gap:10}}>
-                    <Input label="Nome" texto="" />
-                    <Input label="Data" texto=""/>
+                    <Input label="Nome" txt={nome} setTxt={setNome} placeholder="Nome da Pesquisa" color="grey" />
+                    <Input label="Data" txt={data} setTxt={setData} placeholder="dd/mm/yyyy" color="grey" />
                     <InputImagem label="Imagem" texto="" altura={70}/>
                 </View>
                 <Botao texto="SALVAR" cor="#37BD6D" tamanho={35} navigation={props.navigation} tela="DrawerNavigator"/>
