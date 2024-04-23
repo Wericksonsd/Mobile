@@ -1,9 +1,12 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const Botao = (props) => {
+    const cor = props.cor
+    const tamanho = props.tamanho
+
     return (
-        <TouchableOpacity style={estilos.fundo}>
-            <Text style={estilos.texto}>{props.texto}</Text>
+        <TouchableOpacity style={[estilos.fundo, {backgroundColor: cor}]} onPress={() => {props.navigation.navigate(props.tela)}}>
+            <Text style={[estilos.texto, {fontSize: tamanho}]}>{props.texto}</Text>
         </TouchableOpacity>
     )
 }
@@ -11,12 +14,13 @@ const Botao = (props) => {
 const estilos = StyleSheet.create({
     texto: {
         fontFamily: 'AveriaLibre-Regular',
-        color: 'white',
-        fontSize: 28
+        color: 'white'
     },
     fundo: {
         backgroundColor: '#37BD6D',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: "center",
+        width: "100%"
     }
 })
 

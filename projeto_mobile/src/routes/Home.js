@@ -1,10 +1,14 @@
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, TextInput } from 'react-native'
+import Botao from '../components/Botao'
 
-const Home = () => {
+const Home = (props) => {
     return (
         <View style={estilos.viewMae}>
+            <View style={estilos.conteudo}>
+                <TextInput></TextInput>
             <Text style={estilos.texto}>HOME</Text>
-            {/* <BotaoGeral icone="trash-can-outline" cor="white" texto="Apagar" tamBotao={100} tamTexto={30} tamIcone={50} funcao={'() => {props.Navigation.Navigate("AgradecimentoParticipacao")}'}/> */}
+                <Botao texto="NOVA PESQUISA" cor="#37BD6D" tamanho={32} navigation={props.navigation} tela="NovaPesquisa"/>
+            </View>
         </View>
     )
 }
@@ -21,6 +25,12 @@ const estilos  = StyleSheet.create({
         color: "white",
         fontFamily: "AveriaLibre-Regular",
         fontSize: 40
+    },
+    conteudo: {
+        justifyContent: "center",
+        backgroundColor:"red",
+        height: "95%",
+        width: "97%"
     }
 })
 

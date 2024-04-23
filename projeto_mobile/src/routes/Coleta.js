@@ -9,7 +9,7 @@ const Coleta = (props) => {
                 <Text style={estilos.texto}>O que você acho do Carnaval 2024?</Text>
             </View>
             <View style={estilos.view}>
-            <BotaoColeta icone="emoticon-angry-outline" cor="#D71616" texto="Péssimo"  navigation={props.navigation} />
+            <BotaoColeta icone="emoticon-angry-outline" cor="#D71616" texto="Péssimo" navigation={props.navigation} />
             <BotaoColeta icone="emoticon-sad-outline" cor="#FF360A" texto="Ruim" navigation={props.navigation} />
             <BotaoColeta icone="emoticon-neutral-outline" cor="#FFC632" texto="Neutro" navigation={props.navigation} />
             <BotaoColeta icone="emoticon-happy-outline" cor="#37BD6D" texto="Bom" navigation={props.navigation} />

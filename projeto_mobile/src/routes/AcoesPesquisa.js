@@ -7,8 +7,8 @@ import ItemAcao from '../components/ItemAcao'
 const AcoesPesquisa = (props) => {
     return (
         <View style={estilos.viewMae}>
-            <ItemAcao texto="Modificar" cor="white" icone="square-edit-outline" tela="DrawerNavigator" navigation={props.navigation} />
-            <ItemAcao texto="Coletar Dados" cor="white" icone="checkbox-multiple-outline" tela="PopUp" navigation={props.navigation} />
+            <ItemAcao texto="Modificar" cor="white" icone="square-edit-outline" tela="ModificarPesquisa" navigation={props.navigation} />
+            <ItemAcao texto="Coletar Dados" cor="white" icone="checkbox-multiple-outline" tela="Coleta" navigation={props.navigation} />
             <ItemAcao texto="Relatório" cor="white" icone="shape-circle-plus" tela="Coleta" navigation={props.navigation} />
         </View>
     )

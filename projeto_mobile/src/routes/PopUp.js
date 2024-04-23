@@ -8,10 +8,10 @@ const PopUp = (props) => {
                 <Text style={estilos.texto}>pesquisa?</Text>
             </View>
             <View style={estilos.view}>
-                <TouchableOpacity style={estilos.botao} onPress={() => {props.navigation.goBack()}}>
+                <TouchableOpacity style={estilos.botao} onPress={() => {console.log("Sim")}}>
                     <Text style={estilos.texto}>SIM</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[estilos.botao,{backgroundColor: "#3F92C5"}]} onPress={() => {props.navigation.goBack()}}>
+                <TouchableOpacity style={[estilos.botao,{backgroundColor: "#3F92C5"}]} onPress={() => {console.log("cancelou")}}>
                     <Text style={estilos.texto}>CANCELAR</Text>
                 </TouchableOpacity>
             </View>

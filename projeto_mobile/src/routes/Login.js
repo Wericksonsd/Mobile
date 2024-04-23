@@ -3,23 +3,32 @@
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
 import { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Input from '../components/Input'
+import Botao from '../components/Botao'
 
 
 const Login = (props) => {
     const [txtUsuario, setUsuario] = useState()
     const [txtSenha, setSenha] = useState()
 
-    const goToFinal = () => {
-        props.navigation.navigate('AcoesPesquisa')
-    }
 
     return (
         <View style={estilos.viewMae}>
-            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10}}>
+            <View style={estilos.titulo}>
                 <Text style={estilos.texto}>Satisfying.you</Text>
                 <Icon name="emoticon-happy-outline" size={60} color="white" />
             </View>
-            <Button onPress={goToFinal} color='#37BD6D' title='Salvar'/>
+            <View style={estilos.formulario}>
+                <View style={{gap:5}}>
+                    <Input label="E-mail" texto="" />
+                    <Input label="Senha" texto=""/>
+                </View>
+                <Botao texto="Entrar" cor="#37BD6D" tamanho={32} navigation={props.navigation} tela="DrawerNavigator"/>
+            </View>
+            <View style={estilos.botoes}>
+                <Botao texto="Criar minha conta" cor="#419ED7" tamanho={25} navigation={props.navigation} tela="NovaConta"/>
+                <Botao texto="Esqueci minha senha" cor="#B5C7D1" tamanho={25} navigation={props.navigation} tela="RecuperaSenha"/>
+            </View>
         </View>
     )
 }
@@ -31,17 +40,28 @@ const estilos = StyleSheet.create({
         height: "100%",
         justifyContent: "center",
         alignItems: "center",
-        gap: 30
+        gap: 10
     },
     texto: {
         color: "white",
         fontFamily: "AveriaLibre-Regular",
-        fontSize: 40
+        fontSize: 50
     },
-    botaoOk: {
-        fontFamily: "AveriaLibre-Regular",
-        height: 100,
-        width: 100
+    botoes: {
+        width: 600,
+        gap: 10
+    },
+    formulario: {
+        width: 600,
+        height: 210,
+        gap: 20
+    },
+    titulo: {
+        display: 'flex', 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        gap: 10, 
+        marginTop:0
     }
 })
 
