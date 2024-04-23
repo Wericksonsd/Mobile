@@ -1,13 +1,13 @@
-//Tela de login do Sistema
+//Tela de Agradecimentos
 //Imports
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 const AgradecimentoParticipacao = (props) => {
+    const seconds = 2
     return (
         <View style={estilos.viewMae}>
             <Text style={estilos.texto}>Obrigado por participar da pesquisa!</Text>
-            <Button color="#372770" onPress={() => { props.navigation.goBack() }} title='' />
-            <Text style={estilos.texto}>Aguardamos você no próximo ano!</Text>
+            <Text style={estilos.texto} onload={setTimeout(() => {props.navigation.navigate('DrawerNavigator')}, seconds*1000)} >Aguardamos você no próximo ano!</Text>
         </View>
     )
 }
