@@ -4,8 +4,8 @@ const Input = (props) => {
     return (
         <View>
             <Text style={estilos.texto}>{props.label} </Text>
-            <TextInput style={estilos.input} value={props.txt} onChangeText={props.setTxt}
-            placeholder={props.placeholder} placeholderTextColor={props.color} />
+            <TextInput style={[estilos.input, {color: "black", fontFamily:"AveriaLibre-Regular"}]} value={props.txt} onChangeText={props.setTxt}
+            placeholder={props.placeholder} placeholderTextColor={props.color} {...props} />
         </View>
     )
 }

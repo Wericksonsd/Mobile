@@ -19,7 +19,7 @@ const Login = (props) => {
             <View style={estilos.formulario}>
                 <View style={{gap:5}}>
                     <Input label="E-mail" txt={usuario} setTxt={setUsuario} placeholder="usuario@email.com" color="grey"/>
-                    <Input label="Senha" txt={senha} setTxt={setSenha} placeholder="******" color="grey"/>
+                    <Input label="Senha" txt={senha} setTxt={setSenha} placeholder="******" color="grey" secureTextEntry />
                 </View>
                 <Botao texto="Entrar" cor="#37BD6D" tamanho={32} navigation={props.navigation} tela="DrawerNavigator"/>
             </View>

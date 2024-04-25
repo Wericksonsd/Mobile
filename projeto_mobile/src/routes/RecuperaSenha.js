@@ -13,7 +13,7 @@ const RecuperaSenha = (props) => {
         <View style={estilos.viewMae}>
             <View style={estilos.formulario}>
                 <Input label="E-mail" txt={usuario} setTxt={setUsuario} placeholder="usuario@email.com" color="grey"/>
-                <Botao texto="RECUPERAR" cor="#37BD6D" tamanho={35} navigation={props.navigation} tela="AcoesPesquisa"/>
+                <Botao texto="RECUPERAR" cor="#37BD6D" tamanho={35} navigation={props.navigation} tela="Login"/>
             </View>
         </View>
     )

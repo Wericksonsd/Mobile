@@ -1,4 +1,4 @@
-import { TextInput, StyleSheet, Text, View } from "react-native";
+import { TextInput, StyleSheet, Text, View, Image } from "react-native";
 import { useState } from "react";
 import { Modal } from "react-native-paper";
 
@@ -7,7 +7,9 @@ const InputImagem = (props) => {
     return (
         <View style={{gap: 2}}>
             <Text style={estilos.texto}>{props.label} </Text>
-            <TextInput style={[estilos.input, {height: props.altura}]}/>
+            <View style={estilos.input}>
+                <Image style={estilos.imagem} source={{uri: props.image}}/>
+            </View>
         </View>
         
     )
@@ -15,13 +17,20 @@ const InputImagem = (props) => {
 
 const estilos = StyleSheet.create({
     input: {
+        height: 70,
         width: "50%",
-        backgroundColor: "white"
+        backgroundColor: "white", 
+        justifyContent: "center", 
+        alignItems: "center"
     },
     texto: {
         color: "white",
         fontFamily: "AveriaLibre-Regular",
         fontSize: 20
+    }, 
+    imagem: {
+        height: 60,
+        width: 60
     }
 })
 
