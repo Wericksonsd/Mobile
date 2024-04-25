@@ -1,4 +1,4 @@
-import { TextInput, StyleSheet, Text, View, Image } from "react-native";
+import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import { useState } from "react";
 import { Modal } from "react-native-paper";
 
@@ -7,9 +7,9 @@ const InputImagem = (props) => {
     return (
         <View style={{gap: 2}}>
             <Text style={estilos.texto}>{props.label} </Text>
-            <View style={estilos.input}>
+            <Pressable style={estilos.input}  {...props}>
                 <Image style={estilos.imagem} source={{uri: props.image}}/>
-            </View>
+            </Pressable>
         </View>
         
     )
