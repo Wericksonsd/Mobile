@@ -1,23 +1,23 @@
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native"
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 import { Drawer } from "react-native-paper"
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const CustomDrawer = (props) => {
     return (
-        <DrawerContentScrollView justifyContent='space-between'>
+        <DrawerContentScrollView justifyContent='space-between' style={{height: "100%"}}>
             <View>
                 <Drawer.Section showDivider="false" theme={{colors: {primary: "red"}}} style={estilos.viewMae}>
                     <Text style={estilos.texto}>usuario@dominio.com</Text>
                 </Drawer.Section>
-                <View flex={75} paddingTop={30}>
-                    <Icon name="exit-to-app" size={30} color="white"/>
+                <View flex={75} paddingTop={10} >
                     <DrawerItemList {...props} style={estilos.texto} />
+                    <Icon style={estilos.iconePesquisa} name="file-document-outline" size={30} color="white"/>
                 </View>
             </View>
-            <View style={estilos.sair}>
-                <Icon name="exit-to-app" size={30} color="white"/>
-                <DrawerItem labelStyle={estilos.texto} label="Sair" onPress={() => { props.navigation.goBack() }} />
+            <View style={estilos.viewBotao}>
+                <Icon style={estilos.iconeSair} name="exit-to-app" size={30} color="white"/>
+                <DrawerItem labelStyle={[estilos.texto, {paddingLeft: 30, justifyContent: "flex-end"}]} label="Sair" onPress={() => { props.navigation.navigate("Login") }} />
             </View>
         </DrawerContentScrollView>
     )
@@ -33,6 +33,10 @@ const estilos = StyleSheet.create({
         borderBottomLeftRadius: 25,
         borderBottomWidth: StyleSheet.hairlineWidth
     },
+    viewBotao: {
+        justifyContent: "flex-end",
+        height: 220
+    },
     texto: {
         color: "white",
         fontFamily: "AveriaLibre-Regular",
@@ -43,7 +47,18 @@ const estilos = StyleSheet.create({
         flexDirection:'row',
         alignItems: 'center',
         justifyContent: 'flex-start'
+    }, 
+    iconeSair: {
+        position: "absolute",
+        left: 10,
+        bottom: 15
+    },
+    iconePesquisa: {
+        position: "absolute",
+        left: 10,
+        bottom: 15
     }
+    
 })
 
 export default CustomDrawer

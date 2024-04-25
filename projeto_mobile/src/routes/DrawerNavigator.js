@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Home from './Home'
@@ -10,10 +10,19 @@ const DrawerNavigator = (props) => {
     return (
         <Drawer_Navigator.Navigator
             drawerContent={(props) => <CustomDrawer {...props} />}
-            screenOptions={{ headerTitle: "", headerTintColor: 'white', headerStyle: { backgroundColor: '#2B1D62' }, drawerLabelStyle: { color: "white", backgroundColor: "#2B1D62" }, drawerStyle: { backgroundColor: "#2B1D62" } }}>
+            screenOptions={{ headerTitle: "", headerTintColor: 'white', headerStyle: { backgroundColor: '#2B1D62' }, drawerLabelStyle: estilos.texto, drawerStyle: { backgroundColor: "#2B1D62" } }}>
             <Drawer_Navigator.Screen name="Pesquisa" component={Home} />
         </Drawer_Navigator.Navigator>
     )
 }
+
+const estilos = StyleSheet.create({
+    texto: {
+        color: "white",
+        fontFamily: "AveriaLibre-Regular", 
+        fontSize: 25, 
+        paddingLeft: 30
+    }
+})
 
 export default DrawerNavigator
