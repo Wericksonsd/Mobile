@@ -2,7 +2,6 @@ import { View, StyleSheet, Text } from 'react-native'
 import BotaoColeta from '../components/BotaoColeta'
 
 const Coleta = (props) => {
-    const goToFinal = () => {props.Navigation.Navigate("AgradecimentoParticipacao")}
     return (
         <View style={estilos.viewMae}>
             <View>
