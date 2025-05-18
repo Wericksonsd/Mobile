@@ -2,7 +2,7 @@
 //Imports
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 import Login from "./src/routes/Login";
 import AgradecimentoParticipacao from "./src/routes/AgradecimentoParticipacao";
 import AcoesPesquisa from "./src/routes/AcoesPesquisa";
@@ -19,6 +19,7 @@ const Stack = createStackNavigator()
 const App = () => {
     return (
         <NavigationContainer>
+            <StatusBar hidden={true} />
             <Stack.Navigator initialRouteName="Login" screenOptions={{ headerTintColor: '#573FBA', headerTitleStyle: estilos.texto,  headerStyle: { backgroundColor: '#2B1D62' } }}>
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="AcoesPesquisa" component={AcoesPesquisa} options={{ title: "Ação", }} />

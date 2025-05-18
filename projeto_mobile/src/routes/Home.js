@@ -18,7 +18,7 @@ const pesquisas = [
     },
     {
         titulo: "MENINAS CPU",
-        imagem: "https://imgs.search.brave.com/a5w3kED3p2wcGufgyO2X9nLIf0ugbdZOdDN9KF5yikI/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9seW5j/YXMubmV0L3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIzLzAzL3Rl/Y25vbG9naWEtTHlu/Y2FzLndlYnA",
+        imagem: "https://imgs.search.brave.com/3iQZwA8AorJs7CWlI6INWcmO-PoyJnTZMBoXfUxT03o/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZW5p/bmFzZGlnaXRhaXNu/b2NlcnJhZG8uY29t/LmJyL2ltYWdlcy9w/ZXJmaWwuanBn",
         data: "01/04/2022"
     },
     {

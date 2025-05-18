@@ -35,7 +35,7 @@ const estilos = StyleSheet.create({
     },
     viewBotao: {
         justifyContent: "flex-end",
-        height: 220
+        height: 250
     },
     texto: {
         color: "white",
