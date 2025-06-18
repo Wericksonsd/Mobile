@@ -5,6 +5,8 @@ import { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Input from '../components/Input'
 import Botao from '../components/Botao'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth_module } from '../firebase/config'
 
 const Login = (props) => {
     const [usuario, setUsuario] = useState("")
@@ -18,6 +20,19 @@ const Login = (props) => {
     }
     const validaSenha = () => {
         setValidadeSenha(senha.length >= 6)
+    }
+    const authUsuario = () => {
+        if (validadeUsuario && validadeSenha) {
+            signInWithEmailAndPassword(auth_module, usuario, senha)
+            .then(() => {
+                props.navigation.navigate("DrawerNavigator")
+            })
+            .catch((error) => {
+                alert("Usuário ou senha inválidos")
+            })
+        } else {
+            alert("Preencha os campos corretamente")
+        }
     }
 
     return (
@@ -33,11 +48,11 @@ const Login = (props) => {
                     <Input label="Senha" txt={senha} setTxt={setSenha} placeholder="******" color="grey" secureTextEntry onBlur={validaSenha}/>
                     {!validadeSenha && <Text style={estilos.erro}>Senha deve ter pelo menos 6 caracteres</Text>}
                 </View>
-                <Botao texto="Entrar" cor="#37BD6D" tamanho={32} navigation={props.navigation} tela="DrawerNavigator" />
+                <Botao texto="Entrar" cor="#37BD6D" tamanho={32} onPress={() => authUsuario()} />
             </View>
             <View style={estilos.botoes}>
-                <Botao texto="Criar minha conta" cor="#419ED7" tamanho={25} navigation={props.navigation} tela="NovaConta"/>
-                <Botao texto="Esqueci minha senha" cor="#B5C7D1" tamanho={25} navigation={props.navigation} tela="RecuperaSenha"/>
+                <Botao texto="Criar minha conta" cor="#419ED7" tamanho={25} onPress={() => props.navigation.navigate("NovaConta")}/>
+                <Botao texto="Esqueci minha senha" cor="#B5C7D1" tamanho={25} onPress={() => props.navigation.navigate("RecuperaSenha")}/>
             </View>
         </View>
     )

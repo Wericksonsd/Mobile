@@ -1,9 +1,11 @@
 //Tela de cadastro de nova conta
 //Imports
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Button } from 'react-native'
 import { useState } from 'react'
 import Input from '../components/Input'
 import Botao from '../components/Botao'
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { auth_module } from '../firebase/config'
 
 
 const NovaConta = (props) => {
@@ -13,6 +15,23 @@ const NovaConta = (props) => {
     const [validadeUsuario, setValidadeUsuario] = useState(true)
     const [validadeSenha, setValidadeSenha] = useState(true)
     const [validadeSenha2, setValidadeSenha2] = useState(true)
+
+    const cadUsuario = () => {
+        if (validadeUsuario && validadeSenha && validadeSenha2) {
+            createUserWithEmailAndPassword(auth_module, usuario, senha)
+                .then((userCredential) => {
+                    console.log(userCredential.user)
+                    props.navigation.navigate("Login")
+                })
+                .catch((error) => {
+                    const errorCode = error.code
+                    const errorMessage = error.message
+                    console.log(errorCode, errorMessage)
+                })
+        } else {
+            console.log("Erro ao cadastrar usuário: Verifique os campos")
+        }
+    }
 
     const validaUsuario = () => {
         const usuarioRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -37,7 +56,7 @@ const NovaConta = (props) => {
                     <Input label="Repetir senha" txt={senha2} setTxt={setSenha2} placeholder="******" color="grey" secureTextEntry onBlur={validaSenha2}/>
                     {!validadeSenha2 && <Text style={estilos.erro}>As senhas devem ser iguais</Text>}
                 </View>
-                <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} navigation={props.navigation} tela="Login"/>
+                <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} onPress={() => cadUsuario()}/>
             </View>
         </View>
     )

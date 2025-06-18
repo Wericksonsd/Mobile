@@ -69,7 +69,7 @@ const Home = (props) => {
                             }
                             keyExtractor={item => item.titulo} 
                         />
-                    <Botao texto="NOVA PESQUISA" cor="#37BD6D" tamanho={32} navigation={props.navigation} tela="NovaPesquisa"/>
+                    <Botao texto="NOVA PESQUISA" cor="#37BD6D" tamanho={32} onPress={() => props.navigation.navigate("NovaPesquisa")}/>
                 </View>
             </View>
         </PaperProvider>

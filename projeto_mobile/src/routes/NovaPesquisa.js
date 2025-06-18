@@ -50,7 +50,7 @@ const NovaPesquisa = (props) => {
                     onPress={() => {console.log("Imagem inserida")}}
                     />
                 </View>
-                <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} navigation={props.navigation} tela="DrawerNavigator" />
+                <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} onPress={() => props.navigation.navigate("DrawerNavigator")} />
             </View>
         </View>
     )
