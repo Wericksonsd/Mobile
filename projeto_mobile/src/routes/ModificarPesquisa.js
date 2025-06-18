@@ -25,7 +25,7 @@ const ModificarPesquisa = (props) => {
                     <Icon style={estilos.icone} name="calendar-month-outline" size={40} color="grey" />
                     <InputImagem label="Imagem" image="https://imgs.search.brave.com/Cneu7QLFmezkZ3jZEtqfv-m75wfiR0a3Kpvlr_UTACQ/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/aGFyZHdhcmUuY29t/LmJyL3dwLWNvbnRl/bnQvdXBsb2Fkcy9z/dGF0aWMvd3AvMjAy/Mi8wMS8yOC8xLTQu/anBn" />
                 </View>
-                <Botao texto="SALVAR" cor="#37BD6D" tamanho={35} navigation={props.navigation} tela="DrawerNavigator" />
+                <Botao texto="SALVAR" cor="#37BD6D" tamanho={35} onPress={() => props.navigation.navigate("DrawerNavigator")} />
             </View>
             <View style={{ justifyContent: "flex-end" }}>
                 <View style={estilos.botao}>

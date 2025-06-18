@@ -5,7 +5,7 @@ const Botao = (props) => {
     const tamanho = props.tamanho
 
     return (
-        <TouchableOpacity style={[estilos.fundo, {backgroundColor: cor}]} onPress={() => {props.navigation.navigate(props.tela)}}>
+        <TouchableOpacity style={[estilos.fundo, {backgroundColor: cor}]} onPress={props.onPress}>
             <Text style={[estilos.texto, {fontSize: tamanho}]}>{props.texto}</Text>
         </TouchableOpacity>
     )
