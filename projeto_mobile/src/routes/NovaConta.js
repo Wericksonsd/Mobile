@@ -1,6 +1,6 @@
 //Tela de cadastro de nova conta
 //Imports
-import { View, StyleSheet, Text, Button } from 'react-native'
+import { View, StyleSheet, Text, Alert } from 'react-native'
 import { useState } from 'react'
 import Input from '../components/Input'
 import Botao from '../components/Botao'
@@ -20,16 +20,20 @@ const NovaConta = (props) => {
         if (validadeUsuario && validadeSenha && validadeSenha2) {
             createUserWithEmailAndPassword(auth_module, usuario, senha)
                 .then((userCredential) => {
-                    console.log(userCredential.user)
+                    console.log("USAURIO LOGADO: ", userCredential.user)
                     props.navigation.navigate("Login")
                 })
                 .catch((error) => {
-                    const errorCode = error.code
-                    const errorMessage = error.message
-                    console.log(errorCode, errorMessage)
+                    Alert.alert(
+                        "Erro: Usuario não cadastrado", 
+                        "Verifique se o email já foi cadastrado ou tente novamente mais tarde"
+                    )
                 })
         } else {
-            console.log("Erro ao cadastrar usuário: Verifique os campos")
+            Alert.alert(
+                "Erro: Dados inválidos",
+                "Verifique se os campos estão corretos"
+            )
         }
     }
 
