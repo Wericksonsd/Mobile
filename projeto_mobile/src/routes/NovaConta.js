@@ -26,7 +26,7 @@ const NovaConta = (props) => {
                 .catch((error) => {
                     Alert.alert(
                         "Erro: Usuario não cadastrado", 
-                        "Verifique se o email já foi cadastrado ou tente novamente mais tarde"
+                        "Verifique se o email já foi cadastrado ou se os campos estão corretos"
                     )
                 })
         } else {
