@@ -1,6 +1,6 @@
 //Tela de login do Sistema
 //Imports
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 import { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Input from '../components/Input'
@@ -28,10 +28,17 @@ const Login = (props) => {
                 props.navigation.navigate("DrawerNavigator")
             })
             .catch((error) => {
-                alert("Usuário ou senha inválidos")
+                // console.error("Erro de autenticação: ", error)
+                Alert.alert(
+                    "Erro: Autenticação",
+                    "Usuário ou senha inválidos"
+                )
             })
         } else {
-            alert("Preencha os campos corretamente")
+            Alert.alert(
+                "Erro: Dados inválidos",
+                "Preencha os campos corretamente"
+            )
         }
     }
 

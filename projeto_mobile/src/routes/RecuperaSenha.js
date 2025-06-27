@@ -1,6 +1,6 @@
 //Tela de recuperação de senha
 //Imports
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Alert } from 'react-native'
 import { useState } from 'react'
 import Input from '../components/Input'
 import Botao from '../components/Botao'
@@ -21,15 +21,24 @@ const RecuperaSenha = (props) => {
         if (validadeUsuario) {
             sendPasswordResetEmail(auth_module, usuario)
             .then(() => {
-                alert("E-mail enviado com sucesso!")
+                Alert.alert(
+                    "Sucesso",
+                    "E-mail enviado com sucesso!"
+                )
                 props.navigation.navigate("Login")
             })
             .catch((error) => {
-                alert("Erro ao enviar e-mail")
+                Alert.alert(
+                    "Erro",
+                    "Erro ao enviar e-mail"
+                )
                 console.log("Falha ao enviar email: "+ JSON.stringify(error))
             })
         } else {
-            alert("E-mail inválido")
+            Alert.alert(
+                "Erro de validação",
+                "E-mail inválido"
+            )
         }
     }
 
