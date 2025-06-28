@@ -6,6 +6,8 @@ import Input from '../components/Input'
 import InputImagem from '../components/InputImagem'
 import Botao from '../components/Botao'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import {InitializeFireStore, collection, addDoc} from "firebase/firestore";
+import { auth_module } from '../firebase/config'
 
 
 const NovaPesquisa = (props) => {
@@ -13,6 +15,19 @@ const NovaPesquisa = (props) => {
     const [data, setData] = useState("")
     const [validadeNome, setValidadeNome] = useState(true)
     const [validadeData, setValidadeData] = useState(true)
+
+    const db = InitializeFireStore(auth_module, {experimentalForceLongPolling: true})
+
+    const pesquisaCollection = collection(db, "pesquisa")
+
+    const addPesquisa = () => {
+        const docPesquisa = {
+            nome: nome,
+            data: data
+        }
+
+        addDoc(pesquisaCollection, docPesquisa).then(() => {props.navigation.navigate("DrawerNavigator")})
+    }
 
     const validaNome = () => {
         if(!nome.trim()){
@@ -50,7 +65,7 @@ const NovaPesquisa = (props) => {
                     onPress={() => {console.log("Imagem inserida")}}
                     />
                 </View>
-                <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} onPress={() => props.navigation.navigate("DrawerNavigator")} />
+                <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} onPress={() => {addPesquisa()}} />
             </View>
         </View>
     )
