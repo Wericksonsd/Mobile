@@ -1,6 +1,6 @@
 //Tela de login do Sistema
 //Imports
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 import { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Input from '../components/Input'
@@ -21,17 +21,29 @@ const Login = (props) => {
     const validaSenha = () => {
         setValidadeSenha(senha.length >= 6)
     }
+    const navega = (pagina) => {
+        props.navigation.navigate(`${pagina}`)
+        setUsuario("")
+        setSenha("")
+    }
     const authUsuario = () => {
         if (validadeUsuario && validadeSenha) {
             signInWithEmailAndPassword(auth_module, usuario, senha)
             .then(() => {
-                props.navigation.navigate("DrawerNavigator")
+                navega("DrawerNavigator")
             })
             .catch((error) => {
-                alert("Usuário ou senha inválidos")
+                Alert.alert(
+                    "Erro: Autenticação",
+                    "Usuário ou senha inválidos"
+                )
+                setSenha("")
             })
         } else {
-            alert("Preencha os campos corretamente")
+            Alert.alert(
+                "Erro: Dados inválidos",
+                "Preencha os campos corretamente"
+            )
         }
     }
 
@@ -51,8 +63,8 @@ const Login = (props) => {
                 <Botao texto="Entrar" cor="#37BD6D" tamanho={32} onPress={() => authUsuario()} />
             </View>
             <View style={estilos.botoes}>
-                <Botao texto="Criar minha conta" cor="#419ED7" tamanho={25} onPress={() => props.navigation.navigate("NovaConta")}/>
-                <Botao texto="Esqueci minha senha" cor="#B5C7D1" tamanho={25} onPress={() => props.navigation.navigate("RecuperaSenha")}/>
+                <Botao texto="Criar minha conta" cor="#419ED7" tamanho={25} onPress={() => navega("NovaConta")}/>
+                <Botao texto="Esqueci minha senha" cor="#B5C7D1" tamanho={25} onPress={() => navega("RecuperaSenha")}/>
             </View>
         </View>
     )
