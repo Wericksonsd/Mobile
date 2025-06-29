@@ -105,4 +105,5 @@ const estilos  = StyleSheet.create({
     }
 })
 
+
 export default Home

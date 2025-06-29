@@ -109,6 +109,7 @@ const NovaPesquisa = (props) => {
     )
 }
 
+
 const estilos = StyleSheet.create({
     viewMae: {
         flex: 1,

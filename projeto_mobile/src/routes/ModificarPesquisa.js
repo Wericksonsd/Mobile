@@ -23,6 +23,7 @@ const ModificarPesquisa = ({ route, navigation }) => {
         navigation.navigate("DrawerNavigator")
     }
 
+    
     const deletarPesquisa = () => {
         deleteDoc(doc(db, "pesquisa", id))
         navigation.navigate("DrawerNavigator")

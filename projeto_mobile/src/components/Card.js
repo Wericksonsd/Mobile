@@ -19,6 +19,7 @@ const Card = (props) => {
     )
 }
 
+
 const estilos = StyleSheet.create({
     view: {
         backgroundColor: 'white',
