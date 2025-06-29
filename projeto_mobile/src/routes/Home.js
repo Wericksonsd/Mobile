@@ -7,39 +7,6 @@ import { PaperProvider } from 'react-native-paper'
 import { getFirestore, collection, query, onSnapshot} from "firebase/firestore";
 import { app } from '../firebase/config'
 
-const pesquisassss = [
-    {
-        titulo: "SECOMP 2023",
-        imagem: "https://imgs.search.brave.com/Cneu7QLFmezkZ3jZEtqfv-m75wfiR0a3Kpvlr_UTACQ/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93d3cu/aGFyZHdhcmUuY29t/LmJyL3dwLWNvbnRl/bnQvdXBsb2Fkcy9z/dGF0aWMvd3AvMjAy/Mi8wMS8yOC8xLTQu/anBn",
-        data: "10/10/2023"
-    },
-    {
-        titulo: "UBUNTU 2022",
-        imagem: "https://imgs.search.brave.com/SqLfwo0LIiv7YDZL3ZGBW6Ey7CXc6O2uXGYUPLPlxT4/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9zZWVr/bG9nby5jb20vaW1h/Z2VzL1UvdWJ1bnR1/LWxvZ28tOEZERUM2/QTA3Qi1zZWVrbG9n/by5jb20ucG5n",
-        data: "05/06/2022"
-    },
-    {
-        titulo: "MENINAS CPU",
-        imagem: "https://imgs.search.brave.com/3iQZwA8AorJs7CWlI6INWcmO-PoyJnTZMBoXfUxT03o/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZW5p/bmFzZGlnaXRhaXNu/b2NlcnJhZG8uY29t/LmJyL2ltYWdlcy9w/ZXJmaWwuanBn",
-        data: "01/04/2022"
-    },
-    {
-        titulo: "TESTE 1",
-        imagem: "https://imgs.search.brave.com/_vbO3se_30_DzigSTppfpzGUVcr7PgrNjfiHqG4G5OM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I1L0MlQzMlQTJt/cHVzX0N1cml0aWJh/LmpwZw",
-        data: "DD/MM/AAAA"
-    },
-    {
-        titulo: "TESTE 2",
-        imagem: "https://imgs.search.brave.com/_vbO3se_30_DzigSTppfpzGUVcr7PgrNjfiHqG4G5OM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I1L0MlQzMlQTJt/cHVzX0N1cml0aWJh/LmpwZw",
-        data: "DD/MM/AAAA"
-    },
-    {
-        titulo: "TESTE 3",
-        imagem: "https://imgs.search.brave.com/_vbO3se_30_DzigSTppfpzGUVcr7PgrNjfiHqG4G5OM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I1L0MlQzMlQTJt/cHVzX0N1cml0aWJh/LmpwZw",
-        data: "DD/MM/AAAA"
-    }
-]
-
 const Home = (props) => {
     const [pesquisa, setPesquisa] = useState()
     const [listaPesquisas, setListaPesquisas] = useState([])
@@ -85,7 +52,8 @@ const Home = (props) => {
                                     pesq={{
                                         titulo: item.nome,
                                         imagem: item.imagem || "https://imgs.search.brave.com/_vbO3se_30_DzigSTppfpzGUVcr7PgrNjfiHqG4G5OM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I1L0MlQzMlQTJt/cHVzX0N1cml0aWJh/LmpwZw",
-                                        data: item.data || "DD/MM/AAAA"
+                                        data: item.data || "DD/MM/AAAA",
+                                        id: item.id
                                     }}
                                     navigation={props.navigation}
                                 />

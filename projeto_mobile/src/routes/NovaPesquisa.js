@@ -67,7 +67,7 @@ const NovaPesquisa = (props) => {
         validaData();
 
         if (nome.trim() && data.trim()) {
-            addPesquisa();
+            addPesquisa().then(props.navigation.navigate("DrawerNavigator"))
         } else {
             console.log("Cadastro bloqueado pela validação.");
             setError("Preencha todos os campos corretamente.");
