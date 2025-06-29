@@ -1,11 +1,13 @@
 //Tela de cadastro de nova pesquisa
 //Imports
-import { View, StyleSheet, Text, TextInput } from 'react-native'
+import { View, StyleSheet, Text, TextInput, ActivityIndicator, Alert } from 'react-native'
 import { useState } from 'react'
 import Input from '../components/Input'
 import InputImagem from '../components/InputImagem'
 import Botao from '../components/Botao'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { getFirestore, collection, addDoc} from "firebase/firestore";
+import { app } from '../firebase/config'
 
 
 const NovaPesquisa = (props) => {
@@ -14,43 +16,99 @@ const NovaPesquisa = (props) => {
     const [validadeNome, setValidadeNome] = useState(true)
     const [validadeData, setValidadeData] = useState(true)
 
+    // Estados para feedback visual
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+
+    const db = getFirestore(app);
+    const pesquisaCollection = collection(db, "pesquisa")
+
+    // ---> INÍCIO DA SUA LÓGICA DE VALIDAÇÃO ORIGINAL <---
     const validaNome = () => {
-        if(!nome.trim()){
+        if (!nome.trim()) {
             setValidadeNome(false)
-        }else{
+        } else {
             setValidadeNome(true)
         }
     }
 
     const validaData = () => {
-        if(!data.trim()){
+        if (!data.trim()) {
             setValidadeData(false)
-        }else{
+        } else {
             setValidadeData(true)
         }
     }
-    
+    // ---> FIM DA SUA LÓGICA DE VALIDAÇÃO ORIGINAL <---
+
+
+    // Função que tenta enviar os dados para o Firebase
+    const addPesquisa = async () => {
+        setIsLoading(true) // Ativa o carregamento
+        setError(null)     // Limpa erros antigos
+        
+        const docPesquisa = {
+            nome: nome,
+            // Salva a data como Timestamp se a conversão for bem-sucedida, senão null
+            data: data,
+        };
+
+        try {
+            console.log("Enviando dados para o Firestore:", docPesquisa);
+            const docRef = await addDoc(pesquisaCollection, docPesquisa);
+            console.log("Documento adicionado com ID: ", docRef.id);
+            Alert.alert("Sucesso!", "Pesquisa cadastrada.");
+            props.navigation.navigate("DrawerNavigator");
+        } catch (e) {
+            console.error("🔥 Erro ao adicionar documento:", e);
+            setError("Falha ao cadastrar. Verifique sua conexão e as regras do Firebase.");
+        } finally {
+            setIsLoading(false); // Desativa o carregamento, independente do resultado
+        }
+    };
+
+    const handleCadastro = () => {
+        validaNome();
+        validaData();
+
+        if (nome.trim() && data.trim()) {
+            addPesquisa();
+        } else {
+            console.log("Cadastro bloqueado pela validação.");
+            setError("Preencha todos os campos corretamente.");
+        }
+    }
+
     return (
         <View style={estilos.viewMae}>
             <View style={estilos.formulario}>
-                <View style={{ gap: 1 }}>
-                    <Input label="Nome" txt={nome} setTxt={setNome} placeholder="Nome do Projeto" color="grey" onBlur={validaNome}/>
+                <View style={{ gap: 15 }}>
+                    <Input label="Nome" txt={nome} setTxt={setNome} placeholder="Nome do Projeto" color="grey" onBlur={validaNome} />
                     {!validadeNome && <Text style={estilos.erro}>Preencha o nome da pesquisa</Text>}
+                    
                     <View>
                         <Text style={estilos.texto}>Data</Text>
-                        <View style={{display: "flex", flexDirection: "row"}}>
-                            <TextInput style={[estilos.input, { color: "black", fontFamily: "AveriaLibre-Regular" }]} value={data} onChangeText={setData}
-                                placeholder="DD/MM/AAAA" placeholderTextColor="grey" onBlur={validaData}/>
-                            <Icon style={estilos.icone} name="calendar-month-outline" size={40} color="grey" />
+                        <View style={{ display: "flex", flexDirection: "row", alignItems: 'center' }}>
+                            <TextInput style={estilos.input} value={data} onChangeText={setData}
+                                placeholder="DD/MM/AAAA" placeholderTextColor="grey" onBlur={validaData} />
+                            <Icon style={estilos.icone} name="calendar-month-outline" size={30} color="grey" />
                         </View>
                         {!validadeData && <Text style={estilos.erro}>Preencha a data</Text>}
                     </View>
-                    <InputImagem label="Imagem" 
-                    image={"https://imgs.search.brave.com/MdP91AMrljj-msYvpu8JV43j6S3uAqYwGdBtVcZLwhY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L2Z1bmRvLWJyYW5j/b18yMy0yMTQ3NzMw/ODAxLmpwZz9zaXpl/PTYyNiZleHQ9anBnhttps://imgs.search.brave.com/RGIAkDjyCp6BtgTihwtfnS7O6SMnm9AIHuE0iTCEBCM/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L3RleHR1cmFzLWUt/c3VwZXJmaWNpZS1h/YnN0cmF0YXMtYnJh/bmNhcy1kby1wYXBl/bC1kZS1wYXJlZGUt/ZGEtbG9uYS1kYS1j/b3JfNzQxOTAtNjM4/NS5qcGc_c2l6ZT02/MjYmZXh0PWpwZw"} 
-                    onPress={() => {console.log("Imagem inserida")}}
+                    
+                    <InputImagem label="Imagem"
+                        image={"https://img.freepik.com/fotos-gratis/fundo-branco_23-2147730801.jpg"}
+                        onPress={() => { console.log("Imagem inserida") }}
                     />
                 </View>
-                <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} onPress={() => props.navigation.navigate("DrawerNavigator")} />
+
+                {error && <Text style={estilos.erroGeral}>{error}</Text>}
+
+                {isLoading ? (
+                    <ActivityIndicator size="large" color="#49B976" style={{ marginTop: 20 }} />
+                ) : (
+                    <Botao texto="CADASTRAR" cor="#37BD6D" tamanho={35} onPress={handleCadastro} />
+                )}
             </View>
         </View>
     )
@@ -58,19 +116,26 @@ const NovaPesquisa = (props) => {
 
 const estilos = StyleSheet.create({
     viewMae: {
+        flex: 1,
         backgroundColor: "#372775",
         width: "100%",
-        height: "100%",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: 'center',
+        padding: 20
     },
     formulario: {
-        width: 600,
-        height: 200,
+        width: '100%',
+        maxWidth: 600,
         gap: 15
     },
     input: {
-        width: "100%",
-        backgroundColor: "white"
+        flex: 1,
+        height: 45,
+        backgroundColor: "white",
+        color: "black",
+        fontFamily: "AveriaLibre-Regular",
+        paddingHorizontal: 10,
+        fontSize: 16
     },
     texto: {
         color: "white",
@@ -80,12 +145,19 @@ const estilos = StyleSheet.create({
     icone: {
         position: "absolute",
         right: 10,
-        top: 4
     },
     erro: {
         color: '#FD7979',
         fontFamily: "AveriaLibre-Regular",
-        fontSize: 12
+        fontSize: 14,
+        marginTop: -10
+    },
+    erroGeral: {
+        color: '#FD7979',
+        fontFamily: "AveriaLibre-Regular",
+        fontSize: 16,
+        textAlign: 'center',
+        marginTop: 15,
     }
 })
 
